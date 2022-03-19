@@ -1,23 +1,9 @@
 const express = require("express");
-const connection = require("../database/connection");
-
 const app = express();
 const router = express.Router();
+const controller_Pessoa = require("./Pessoa.routes");
 
-router.get("/", async (request, response)=> {
-    try {
-        const conn = await connection.getConnection();
-
-        const consulta = "SELECT * FROM tb_pessoa";
-
-        const rows = await conn.query(consulta);
-
-        response.send(rows);
-    }catch(err){
-        throw err;
-    }
-   
-})
+router.get("/", controller_Pessoa.route );
 
 module.exports = router;
 
