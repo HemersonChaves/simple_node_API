@@ -1,11 +1,12 @@
 const express = require("express");
-const PessoaRepository = require("../repository/PessoaRepository");
+const ListaPessoaController = require("../controller/ListarPessoasController");
 
 const router = express.Router();
-const pessoarepository = new PessoaRepository();
-router.get("/", async (request, response)=> {
-  const result = await pessoarepository.listar();
-  response.status(200).send(result);
+
+
+router.get("/", async (request, response) => {
+    const listapessoaController = new ListaPessoaController();
+    await listapessoaController.handle(request, response);
 });
 
-module.exports =  router;
+module.exports = router;
