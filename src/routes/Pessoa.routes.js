@@ -1,18 +1,18 @@
 const express = require("express");
-const connection = require("../database/connection");
+const connection = require("../infra/connection");
 
-const app = express();
 const router = express.Router();
 
 router.get("/", async (request, response)=> {
     try {
-        const conn = await connection.getConnection();
+        console.log("deu certo");
+         const conn = await connection.getConnection();
 
         const consulta = "SELECT * FROM tb_pessoa";
 
-        const rows = await conn.query(consulta);
+         const rows = await conn.query(consulta);
 
-        response.send(rows);
+         response.send(rows);
     }catch(err){
         throw err;
     }
