@@ -10,7 +10,7 @@ router.get("/", async (request, response) => {
     await listapessoaController.handle(request, response);
 });
 
-router.get("/criar", async (request, response) => {
+router.post("/criar", async (request, response) => {
     const criarpessoaController = new CriarPessoaController();
     await criarpessoaController.handle(request, response);
 });
